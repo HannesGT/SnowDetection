@@ -1,7 +1,7 @@
 # skript / function um die Bilder inkl. der Bewertung anzuzeigen
 # Ziel könnte sein: Auswahl eines Pfads (etwa "Sonnen"). Fenster mit links ->Liste der Bewertungsdatei (Filterung möglich?)
 # Fenster rechts -> Anzeige des Fotos mit der Klassifizierung (muss ja nicht im Bild sein)
-
+4234
 import pandas   # read excel
 import PIL      # Anzeige Bilder
 #from tkinter import *  # GUI
