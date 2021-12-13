@@ -1,6 +1,7 @@
 # This is my first script
 
-
+HALLO LAPTOP
+HALLO 2
 a = 23
 b = 4
 
