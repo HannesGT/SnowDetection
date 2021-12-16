@@ -7,10 +7,12 @@ b = 4
 
 print(a)
 print(b)
-print( a )
+print( a!!! )
 #test123
 HALLO BROWSER
 BROWSER 2
+
+JAAAAA
 
 NEUER CODE
 Alter_Code
