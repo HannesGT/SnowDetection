@@ -53,9 +53,9 @@ root.mainloop()
 print(folder_path)
 
 # Set image training path:
-#trainingPath = "C:/Users/HannesSchütze/OneDrive - greentech/1_Data_Analysis/7_SnowDetector/Sonnen"
-#Bewertung = pandas.read_excel(trainingPath + "/Bewertung.xlsx.")
+trainingPath = "C:/Users/HannesSchütze/OneDrive - greentech/1_Data_Analysis/7_SnowDetector/Sonnen"
+Bewertung = pandas.read_excel(trainingPath + "/Bewertung.xlsx.")
 
-#A = PIL.Image.open(trainingPath + "/training/" + Bewertung.Dateinamen[1])
-#window = tkinter.Tk()
+A = PIL.Image.open(trainingPath + "/training/" + Bewertung.Dateinamen[1])
+window = tkinter.Tk()
 #window.mainloop()
