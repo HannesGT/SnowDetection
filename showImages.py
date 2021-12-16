@@ -10,16 +10,23 @@ from tkinter import filedialog  # GUI
 import tkinter
 
 def browse_button():
-    # Allow user to select a directory and store it in global var
-    # called folder_path
+    # Allow user to select a directory and store it in global var called folder_path
     global folder_path
     filename = tkinter.filedialog.askdirectory()
     folder_path.set(filename)
 
-def chose_presetF():
+def chose_preset():
     # chose known folder
     global folder_path
     folder_path.set("C:/Users/HannesSchütze/OneDrive - greentech/1_Data_Analysis/7_SnowDetector/Sonnen")
+
+def open_viewer():
+    global folder_path
+    folder_path.set("C:/Users/HannesSchütze/OneDrive - greentech/1_Data_Analysis/7_SnowDetector/Sonnen")
+
+def open_training():
+    folder_path.set("C:/Users/HannesSchütze/OneDrive - greentech/1_Data_Analysis/7_SnowDetector/Sonnen")
+
 
 root = tkinter.Tk()
 root.title('Snow Detection V1.0')
@@ -34,11 +41,14 @@ labelPath.pack()
 button2 = tkinter.Button(root,text="Browse", command=browse_button)
 button2.place(x=5, y=60)
 
-button3 = tkinter.Button(root, text="Use Sonnen HS",command=chose_presetF)
+button3 = tkinter.Button(root, text="Chose knwon folder",command=chose_presetF)
 button3.place(x=5, y=100)
 
-button4 = tkinter.Button(root, text="Open",command=chose_presetF)
+button4 = tkinter.Button(root, text="View images",command=chose_presetF)
 button4.place(x=300, y=60)
+
+button5 = tkinter.Button(root, text="Train",command=chose_presetF)
+button5.place(x=300, y=60)
 
 root.mainloop()
 
