@@ -2,12 +2,10 @@
 # Ziel könnte sein: Auswahl eines Pfads (etwa "Sonnen"). Fenster mit links ->Liste der Bewertungsdatei (Filterung möglich?)
 # Fenster rechts -> Anzeige des Fotos mit der Klassifizierung (muss ja nicht im Bild sein)
 
-import pandas   # read excel
-import PIL      # Anzeige Bilder
-#from tkinter import *  # GUI
+import tkinter
+# from tkinter import *  # GUI
 from tkinter import filedialog  # GUI
 
-import tkinter
 
 def browse_button():
     # Allow user to select a directory and store it in global var called folder_path
@@ -41,13 +39,13 @@ labelPath.pack()
 button2 = tkinter.Button(root,text="Browse", command=browse_button)
 button2.place(x=5, y=60)
 
-button3 = tkinter.Button(root, text="Chose knwon folder",command=chose_presetF)
+button3 = tkinter.Button(root, text="Chose knwon folder",command=chose_preset)
 button3.place(x=5, y=100)
 
-button4 = tkinter.Button(root, text="View images",command=chose_presetF)
+button4 = tkinter.Button(root, text="View images",command=chose_preset)
 button4.place(x=300, y=60)
 
-button5 = tkinter.Button(root, text="Train",command=chose_presetF)
+button5 = tkinter.Button(root, text="Train",command=chose_preset)
 button5.place(x=300, y=60)
 
 root.mainloop()
