@@ -3,6 +3,26 @@ from PIL import Image, ImageTk
 import pandas as pd
 import openpyxl
 
+v = 0
+
+
+def next():
+    global v
+    v = v + 1
+    filename_n = str(file[v])  # Dateiname als String der jeweiligen Spalte
+    pic_load_n = Image.open(pathtraining + '\\' + filename_n).resize((576, 324))
+    pic_n = ImageTk.PhotoImage(pic_load_n)  # Nötig um Bild ins Fenster einzufügen
+    pic_put.configure(image=pic_n)
+
+
+def back():
+    global v
+    v = v - 1
+    filename_b = str(file[v])  # Dateiname als String der jeweiligen Spalte
+    pic_load_b = Image.open(pathtraining + '\\' + filename_b).resize((576, 324))
+    pic_b = ImageTk.PhotoImage(pic_load_b)  # Nötig um Bild ins Fenster einzufügen
+    pic_put.configure(image=pic_b)
+
 path = r'C:\Users\DanielaSchumann\OneDrive - greentech GmbH\7_SnowDetector\Sonnen\Bewertung.xlsx'
 pathtraining = r'C:\Users\DanielaSchumann\OneDrive - greentech GmbH\7_SnowDetector\Sonnen\training'
 
@@ -16,21 +36,26 @@ window = tkinter.Tk() # Erzeugt Fenster
 
 window.title('Sonnen') # Name des Fensters
 
-button_next = tkinter.Button(window, text='>', height=2, width=5, font=10) # Erstellt einen Button
+button_next = tkinter.Button(window, text='>', height=2, width=5, font=10, command=next) # Erstellt einen Button
 button_next.pack(side='right') # Nötig, um Button einzufügen
 
-button_back = tkinter.Button(window, text='<', height=2, width=5, font=10) # Erstellt einen Button
+button_back = tkinter.Button(window, text='<', height=2, width=5, font=10, command=back) # Erstellt einen Button
 button_back.pack(side='left') # Nötig, um Button einzufügen
 
-filename = str(file[0]) # Dateiname als String der jeweiligen Spalte
+v = 0 # Laufvariable
+
+filename = str(file[v]) # Dateiname als String der jeweiligen Spalte
 pic_load = Image.open(pathtraining + '\\' + filename).resize((576, 324)) # Lädt das entsprechende Bild
 pic = ImageTk.PhotoImage(pic_load) # Nötig um Bild ins Fenster einzufügen
 pic_put = tkinter.Label(window, image=pic)
 
+#for item in pic_put.keys():
+#    print(item, ': ', pic_put[item])
+
 pic_put.pack(side='bottom')
 
 rate = rating['y wenn Bewertung möglich'] #die Spalte mit der Bewertungsangabe
-r = rate[0] #Bewertung für das entsprechende Bild
+r = rate[v] #Bewertung für das entsprechende Bild
 if r == 'y':
     r = 'ja'
 elif r == 'n':
@@ -38,7 +63,7 @@ elif r == 'n':
 else:
     r = 'nicht angegeben'
 snow = rating['y wenn Schnee']  # die Spalte mit der Schneeangabe
-s = snow[0]  # Schneebewertung für das entsprechende Bild
+s = snow[v]  # Schneebewertung für das entsprechende Bild
 if s == 'y':
     s = 'ja'
 elif s == 'n':
@@ -46,7 +71,7 @@ elif s == 'n':
 else:
     s = 'nicht angegeben'
 snowmodule = rating['y wenn Schnee auf Modul']  # die Spalte mit der Schneeangabe für die Module
-sm = snowmodule[0]  # Schneebewertung der Module für das entsprechende Bild
+sm = snowmodule[v]  # Schneebewertung der Module für das entsprechende Bild
 if sm == 'y':
     sm = 'ja'
 elif sm == 'n':
@@ -54,7 +79,7 @@ elif sm == 'n':
 else:
     sm = 'nicht angegeben'
 gras = rating['1= kurz, 2= lang, 3=zulang']  # die Spalte mit der Grashöhenangabe
-g = gras[0] # Grasbewertung für das entsprechende Bild
+g = gras[v] # Grasbewertung für das entsprechende Bild
 if g == 1:
     g = 'kurz'
 elif g == 2:
@@ -64,7 +89,7 @@ elif g == 3:
 else:
     g = 'nicht definiert'
 time = rating['y, wenn Tag']  # die Spalte mit der Tageszeit
-t = time[0]  # Tageszeitbewertung für das entsprechende Bild
+t = time[v]  # Tageszeitbewertung für das entsprechende Bild
 if t == 'y':
     t = 'Tag'
 elif t == 'n':
@@ -72,7 +97,7 @@ elif t == 'n':
 else:
     t = 'nicht zu erkennen'
 spezial = rating['Besonderheit']  # die Spalte für Besonderheiten
-sp = spezial[0]  # Besonderheiten für das entsprechende Bild
+sp = spezial[v]  # Besonderheiten für das entsprechende Bild
 
 rating_label = tkinter.Label(window, text='Ist eine Bewertung möglich? ' + r)
 rating_label.pack()
