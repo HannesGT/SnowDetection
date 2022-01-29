@@ -3,34 +3,39 @@
 # Fenster rechts -> Anzeige des Fotos mit der Klassifizierung (muss ja nicht im Bild sein)
 
 import tkinter as tk
+import os
 # from tkinter import *  # GUI
 from tkinter import filedialog  # GUI
+loadPath = open("config/trainPath").read()     # read path from config file
 
 def browse_button():
     # Allow user to select a directory and store it in global var called folder_path
-    global folder_path
     filename = tk.filedialog.askdirectory()
     folder_path.set(filename)
 
 def chose_preset():
     # chose known folder
-    global folder_path
-    folder_path.set("C:/Users/HannesSchütze/OneDrive - greentech/1_Data_Analysis/7_SnowDetector/Sonnen")
+    root.destroy()
+    os.system('choosPaths.py')
 
 def open_viewer():
-    global folder_path
-    folder_path.set("C:/Users/HannesSchütze/OneDrive - greentech/1_Data_Analysis/7_SnowDetector/Sonnen")
+    # save seleted path to config
+    open("config/trainPath",mode="w").write(folder_path.get())
+    root.destroy()
+    os.system('ImageWindow.py')
 
 def open_training():
-    folder_path.set("C:/Users/HannesSchütze/OneDrive - greentech/1_Data_Analysis/7_SnowDetector/Sonnen")
+    #tbd
+    open("config/trainPath",mode="w").write(folder_path.get())
+    1+1
 
 
 root = tk.Tk()
 root.title('Snow Detection V1.0')
 folder_path = tk.StringVar()
-folder_path.set("Pfad festlegen ...")
+folder_path.set(loadPath)
 
-frm_intro=tk.Frame()
+frm_intro = tk.Frame()
 lbl_intro1 = tk.Label(master=frm_intro,text="Cockpit: Auswahl des Trainingsordners", font="1")
 lbl_intro1.grid(row=0, column=0, sticky="w")
 lbl_intro2 = tk.Label(master=frm_intro,text="Dieser enthält die Datei 'Bewertung.xlsx' und den Ordner 'training'.")
@@ -49,12 +54,10 @@ btn_known.grid(row=3, column=0, padx=5, pady=5, sticky="w")
 btn_view = tk.Button(root, text="View images",command=open_viewer, bg="lightblue")
 btn_view.grid(row=1, column=1, padx=5, pady=5, sticky="w")
 
-btn_trainer = tk.Button(root, text="Trainer",command=chose_preset, bg="lightgreen")
+btn_trainer = tk.Button(root, text="Trainer",command=open_training, bg="lightgreen")
 btn_trainer.grid(row=2, column=1, padx=5, pady=5, sticky="w")
 
 root.mainloop()
-
-print(folder_path)
 
 # Set image training path:
 #trainingPath = "C:/Users/HannesSchütze/OneDrive - greentech/1_Data_Analysis/7_SnowDetector/Sonnen"

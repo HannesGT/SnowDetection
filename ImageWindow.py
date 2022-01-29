@@ -3,8 +3,12 @@ from PIL import Image, ImageTk
 import pandas as pd
 import openpyxl
 
-path = r'C:\Users\DanielaSchumann\OneDrive - greentech GmbH\7_SnowDetector\Sonnen\Bewertung.xlsx' #Pfad zur Bewertungstabelle
-pathtraining = r'C:\Users\DanielaSchumann\OneDrive - greentech GmbH\7_SnowDetector\Sonnen\training' #Pfad zum Trainingsordner
+chosenPath = open("config/trainPath").read()     # load path from config
+
+path = chosenPath+"\\Bewertung.xlsx" #Pfad zur Bewertungstabelle
+pathtraining = chosenPath + "\\training" #Pfad zum Trainingsordner
+#path = r'C:\Users\DanielaSchumann\OneDrive - greentech GmbH\7_SnowDetector\Sonnen\Bewertung.xlsx' #Pfad zur Bewertungstabelle
+#pathtraining = r'C:\Users\DanielaSchumann\OneDrive - greentech GmbH\7_SnowDetector\Sonnen\training' #Pfad zum Trainingsordner
 
 v = 0 #Laufvariable
 
